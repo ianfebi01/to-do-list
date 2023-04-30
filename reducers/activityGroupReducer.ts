@@ -18,7 +18,6 @@ export const activityGroupReducer: Reducer<
       tmp2?.push({ ...action?.payload });
       // tmp2?.reverse();
       return { ...state, data: tmp2 };
-    case "SET_DATA":
     default:
       return state;
   }
@@ -27,5 +26,5 @@ export const activityGroupReducer: Reducer<
 export type ActionsMapActivityGroupReducer = {
   SET_DATA: ActivityDatas | null;
   REMOVE_GROUP: number;
-  PUSH_DATA: Datas;
+  PUSH_DATA: Datas | null;
 };

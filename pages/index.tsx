@@ -61,7 +61,7 @@ const Home: NextPageWithLayout = () => {
       );
       dispatch({
         type: "PUSH_DATA",
-        payload: res.data,
+        payload: { ...res.data },
       });
       console.log(res.data);
       // router.push(`/${res?.data?.id}`);
