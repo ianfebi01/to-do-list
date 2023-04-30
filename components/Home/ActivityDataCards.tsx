@@ -47,7 +47,7 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas, fetchData }) => {
   };
 
   const handleClickCard = (id: number) => {
-    router.push(`/${id}`);
+    router.push(`/detail/${id}`);
   };
 
   const handleOpenModalDelete = (value: number, titleValue: string) => {

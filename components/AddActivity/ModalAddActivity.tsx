@@ -194,7 +194,7 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
                   <ul className="w-full">
                     {priorityContent?.map((item, i) => (
                       <li
-                        data-cy={`modal-add-priority-${item.value}`}
+                        data-cy="modal-add-priority-item"
                         className="flex justify-between cursor-pointer items-center w-full px-3 h-[42px] hover:bg-secondary transition-colors duration-300 ease-in-out border-b-[1px] border-secondary"
                         key={i}
                         onClick={(value) => handleListClick(item.value)}
