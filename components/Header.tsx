@@ -166,7 +166,7 @@ const Header: FunctionComponent<Props> = ({
               <ul className="w-full">
                 {sortContent?.map((item, i) => (
                   <li
-                    data-cy={item?.value}
+                    data-cy="sort-selection"
                     className="flex justify-between cursor-pointer items-center w-full px-4 h-[52px] hover:bg-secondary transition-colors duration-300 ease-in-out border-b-[1px] border-secondary"
                     key={i}
                     onClick={() => handleSortClick(item.value)}

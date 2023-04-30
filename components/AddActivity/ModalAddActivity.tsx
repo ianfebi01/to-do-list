@@ -68,7 +68,7 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
   // submit
   const { state, dispatch } = useContext(ActivityContext);
 
-  const handleSubmit = async (values: Form, submitProps: any) => {
+  const handleSubmit = async (values: { title: string }, submitProps: any) => {
     try {
       setLoading(true);
       setForm({ ...form, title: values.title, is_active: 1 });
@@ -99,7 +99,7 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
     }
   };
 
-  const formRef = useRef<FormikProps<Form>>(null);
+  const formRef = useRef<FormikProps<{ title: string }>>(null);
 
   return (
     <div data-cy="modal-add">
@@ -113,7 +113,8 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
       >
         <div>
           <Formik
-            initialValues={{ ...form }}
+            enableReinitialize
+            initialValues={{ title: "" }}
             validationSchema={validator}
             onSubmit={handleSubmit}
             innerRef={formRef}
