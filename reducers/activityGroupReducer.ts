@@ -1,4 +1,4 @@
-import { Actions, ActivityDatas } from "@/types/Home";
+import { Actions, ActivityDatas, Datas } from "@/types/Home";
 import { Reducer } from "react";
 
 export const activityGroupReducer: Reducer<
@@ -12,6 +12,13 @@ export const activityGroupReducer: Reducer<
       const tmp = state?.data;
       const filteredData = tmp?.filter((item) => action.payload !== item.id);
       return { ...state, data: filteredData };
+    case "PUSH_DATA":
+      // if (!state?.data) console.log("asu");
+      const tmp2 = state?.data;
+      tmp2?.push({ ...action?.payload });
+      // tmp2?.reverse();
+      return { ...state, data: tmp2 };
+    case "SET_DATA":
     default:
       return state;
   }
@@ -20,4 +27,5 @@ export const activityGroupReducer: Reducer<
 export type ActionsMapActivityGroupReducer = {
   SET_DATA: ActivityDatas | null;
   REMOVE_GROUP: number;
+  PUSH_DATA: Datas | null;
 };

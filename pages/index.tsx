@@ -59,8 +59,12 @@ const Home: NextPageWithLayout = () => {
           email: "ianfebi01@gmail.com",
         }
       );
-
-      router.push(`/${res?.data?.id}`);
+      dispatch({
+        type: "PUSH_DATA",
+        payload: res.data,
+      });
+      console.log(res.data);
+      // router.push(`/${res?.data?.id}`);
       setLoadingCreateActivityGroup(false);
     } catch (error) {
       setLoadingCreateActivityGroup(false);

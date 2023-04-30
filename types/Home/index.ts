@@ -1,7 +1,7 @@
-type Datas = {
-  id: number;
-  title: string;
-  created_at: string;
+export type Datas = {
+  id?: number;
+  title?: string;
+  created_at?: string;
 };
 
 export interface ActivityDatas {
