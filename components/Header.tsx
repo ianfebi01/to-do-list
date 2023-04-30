@@ -190,7 +190,7 @@ const Header: FunctionComponent<Props> = ({
             </div>
           </MySlideDown>
         </div>
-        <div data-cy={pid ? "todo-add-button" : '"activity-add-button"'}>
+        <div data-cy={pid ? "todo-add-button" : "activity-add-button"}>
           <Button onClick={handleClickButton}>
             {loading ? (
               <Fragment>
