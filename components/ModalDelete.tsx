@@ -51,22 +51,25 @@ const ModalDelete: FunctionComponent<Props> = ({
                     Batal
                   </Button>
                 </div>
-                <div data-cy="modal-delete-confirm-button">
-                  <Button onClick={() => actionPositive()} bg="danger">
-                    {loading ? (
-                      <Fragment>
-                        <div className="flex items-center justify-center gap-[1rem] invisible">
-                          Hapus
-                        </div>
-                        <div className="absolute">
-                          <Loader color="red" size={22} />
-                        </div>
-                      </Fragment>
-                    ) : (
-                      "Hapus"
-                    )}
-                  </Button>
-                </div>
+
+                <Button
+                  data-cy="modal-delete-confirm-button"
+                  onClick={() => actionPositive()}
+                  bg="danger"
+                >
+                  {loading ? (
+                    <Fragment>
+                      <div className="flex items-center justify-center gap-[1rem] invisible">
+                        Hapus
+                      </div>
+                      <div className="absolute">
+                        <Loader color="red" size={22} />
+                      </div>
+                    </Fragment>
+                  ) : (
+                    "Hapus"
+                  )}
+                </Button>
               </div>
             </div>
           </div>
