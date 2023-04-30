@@ -27,5 +27,5 @@ export const activityGroupReducer: Reducer<
 export type ActionsMapActivityGroupReducer = {
   SET_DATA: ActivityDatas | null;
   REMOVE_GROUP: number;
-  PUSH_DATA: Datas | null;
+  PUSH_DATA: Datas;
 };
