@@ -11,8 +11,9 @@ import ModalDelete from "../ModalDelete";
 import { toast } from "react-hot-toast";
 interface Props {
   datas?: ActivityDatas | null;
+  fetchData: () => void;
 }
-const ActivityDataCards: FunctionComponent<Props> = ({ datas }) => {
+const ActivityDataCards: FunctionComponent<Props> = ({ datas, fetchData }) => {
   const [loading, setLoading] = useState<number | null>(null);
   const [edit, setEdit] = useState<boolean>(false);
   const [showModalRemove, setShowModalRemove] = useState<boolean>(false);
@@ -34,7 +35,7 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas }) => {
         type: "REMOVE_GROUP",
         payload: id,
       });
-
+      fetchData();
       setLoading(null);
       setId(null);
       toast.success("Activity berhasil dihapus");

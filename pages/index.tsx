@@ -63,7 +63,7 @@ const Home: NextPageWithLayout = () => {
         type: "PUSH_DATA",
         payload: { ...res.data },
       });
-      console.log(res.data);
+
       // router.push(`/${res?.data?.id}`);
       setLoadingCreateActivityGroup(false);
     } catch (error) {
@@ -107,7 +107,10 @@ const Home: NextPageWithLayout = () => {
             img="/images/activity-empty-state.svg"
           />
         ) : (
-          <ActivityDataCards datas={state.activityGroup} />
+          <ActivityDataCards
+            fetchData={() => FetchData()}
+            datas={state.activityGroup}
+          />
         )}
       </div>
     </>
