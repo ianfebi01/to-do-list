@@ -75,7 +75,7 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas }) => {
             >
               <div
                 className="flex flex-col grow-[1] cursor-pointer"
-                onClick={() => handleClickCard(item?.id)}
+                onClick={() => handleClickCard(item?.id as number)}
               >
                 <p
                   data-cy="activity-item-title"
@@ -88,7 +88,7 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas }) => {
                 <p className="text-14 text-text-secondary font-[500]">
                   <Date
                     data-cy="activity-item-date"
-                    dateString={item.created_at}
+                    dateString={item.created_at as string}
                   />
                 </p>
                 <button
