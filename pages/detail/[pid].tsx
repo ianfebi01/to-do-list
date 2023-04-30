@@ -8,7 +8,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
-import { NextPageWithLayout } from "./_app";
+import { NextPageWithLayout } from "../_app";
 import Layout from "@/components/Layout/layout";
 import AddActivityDataList from "@/components/AddActivity/AddActivityDataList";
 import ModalAddActivity from "@/components/AddActivity/ModalAddActivity";
@@ -20,7 +20,6 @@ import axios, { AxiosResponse } from "axios";
 import { GetServerSidePropsContext } from "next";
 import { ActivityDetailsDatas } from "@/types/Home";
 import _debounce from "lodash/debounce";
-import ModalDelete from "@/components/ModalDelete";
 import { Toaster } from "react-hot-toast";
 import { ModalInformationIcon } from "@/components/Icons";
 
