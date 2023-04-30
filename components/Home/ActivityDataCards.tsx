@@ -69,7 +69,7 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas }) => {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-20  w-full h-auto">
           {datas?.data?.map((item, i) => (
             <div
-              data-cy={`activity-item-${i}`}
+              data-cy="activity-item"
               className="bg-white border border-none rounded-[12px] p-6 h-[234px] shadow-card flex flex-col  hover:brightness-95 transition-all duration-300 ease-in-out"
               key={item?.id}
             >
