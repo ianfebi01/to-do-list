@@ -8,16 +8,24 @@ module.exports = {
   theme: {
     colors: {
       primary: "#16ABF8",
+      secondary: "#E5E5E5",
+      "text-secondary": "#888888",
+      "text-secondary-2": "#4A4A4A",
       white: "#fff",
-      blue: "#1fb6ff",
-      purple: "#7e5bef",
+      "gray-light": "#F4F4F4",
+      blue: "#428BC1",
+      purple: "#8942C1",
       pink: "#ff49db",
       orange: "#ff7849",
-      green: "#13ce66",
-      yellow: "#ffc82c",
+      green: "#00A790",
+      yellow: "#F8A541",
+      red: "#ED4C5C",
       "gray-dark": "#273444",
       gray: "#8492a6",
-      "gray-light": "#d3dce6",
+      danger: "#ED4C5C",
+    },
+    boxShadow: {
+      card: "0px 6px 10px rgba(0, 0, 0, 0.1)",
     },
     extend: {
       backgroundImage: {
@@ -27,5 +35,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

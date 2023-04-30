@@ -1,29 +1,110 @@
-import { Plus } from "@/components/Icons";
+import { ModalInformationIcon, Plus } from "@/components/Icons";
 import { NextPageWithLayout } from "./_app";
 import Layout from "@/components/Layout/layout";
-import type { ReactElement } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
 import Image from "next/image";
-import emptyState from "../public/images/activity-empty-state.svg";
+import Button from "@/components/Button";
+import useAxios from "axios-hooks";
+import axios from "axios";
+import Loader from "@/components/Loader";
+import EmptyState from "@/components/EmptyState";
+import { ActivityDatas } from "@/types/Home";
+import ActivityDataCards from "@/components/Home/ActivityDataCards";
+import { ActivityContext, useActivity } from "@/context/ActivityContext";
+import Header from "@/components/Header";
+import { useRouter } from "next/router";
+import { Toaster } from "react-hot-toast";
 
 const Home: NextPageWithLayout = () => {
+  // get all data
+  const [loading, setLoading] = useState<boolean>(false);
+  const [loadingCreateActivityGroup, setLoadingCreateActivityGroup] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    FetchData();
+  }, []);
+
+  const { state, dispatch } = useContext(ActivityContext);
+
+  const FetchData = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.get(
+        "/api-web/activity-groups?email=ianfebi01%40gmail.com"
+      );
+
+      dispatch({
+        type: "SET_DATA",
+        payload: res.data,
+      });
+      // dispatchDatas(res?.data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  // route
+  const router = useRouter();
+  const handleClickButton = async () => {
+    try {
+      setLoadingCreateActivityGroup(true);
+
+      const res = await axios.post(
+        "/api-web/activity-groups?email=ianfebi01%40gmail.com",
+        {
+          title: "New Activity",
+          email: "ianfebi01@gmail.com",
+        }
+      );
+
+      router.push(`/${res?.data?.id}`);
+      setLoadingCreateActivityGroup(false);
+    } catch (error) {
+      setLoadingCreateActivityGroup(false);
+    }
+  };
+
   return (
     <>
-      <div className="flex justify-between">
-        <h1 className="text-36 font-bold">Activity</h1>
-        <button className="bg-primary border rounded-full border-none px-6 text-white h-[54px] text-18 flex items-center justify-center gap-10 hover:brightness-110 transition duration-300 ease">
-          <Plus />
-          Tambah
-        </button>
+      <div data-cy="modal-information">
+        <Toaster
+          toastOptions={{
+            icon: (
+              <div className="text-20" data-cy="modal-information-icon">
+                <ModalInformationIcon />
+              </div>
+            ),
+            position: "top-right",
+            className: "text-14",
+            style: {
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              height: "44px",
+            },
+          }}
+        />
       </div>
-      <div className="flex justify-center items-center">
-        <div className="max-w-[767px]">
-          <Image
-            src="/images/activity-empty-state.svg"
-            alt="Activity empty state"
-            layout="fill"
-            className="image--empty-state"
+      <Header
+        type="Home"
+        title="Activity"
+        handleClickButton={handleClickButton}
+        loading={loadingCreateActivityGroup}
+      />
+      <div className="h-full flex justify-center items-center mt-4">
+        {loading ? (
+          <Loader size={40} color="primary" />
+        ) : !loading &&
+          state?.activityGroup?.data != undefined &&
+          !state?.activityGroup?.data.length ? (
+          <EmptyState
+            data-cy="activity-empty-state"
+            img="/images/activity-empty-state.svg"
           />
-        </div>
+        ) : (
+          <ActivityDataCards datas={state.activityGroup} />
+        )}
       </div>
     </>
   );

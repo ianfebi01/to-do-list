@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+// html,
+// body,
+// body {
+//   height: 100%;
+// }
+// div#__next {
+//   min-height: 100vh;
+// }
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
@@ -37,5 +46,12 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+}
+
+// border
+.border {
+  &-red {
+    border: 1px solid red;
   }
 }

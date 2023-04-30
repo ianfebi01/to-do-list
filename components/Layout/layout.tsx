@@ -6,14 +6,16 @@ type DefaultLayoutProps = {
 
 export default function Layout({ children }: DefaultLayoutProps) {
   return (
-    <>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
 
-      <main className="my-6">
-        <div className="h-full flex items-center justify-center">
-          <div className="container mx-4 lg:max-w-[1024px]">{children}</div>
+      <div className="py-6  flex flex-col grow-[1] items-stretch bg-gray-light">
+        <div className=" flex justify-center grow-[1] ">
+          <div className="container mx-4 lg:max-w-[1024px] flex flex-col grow-[1] ">
+            {children}
+          </div>
         </div>
-      </main>
-    </>
+      </div>
+    </div>
   );
 }
