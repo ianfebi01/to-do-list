@@ -108,6 +108,7 @@ const Home: NextPageWithLayout = () => {
           />
         ) : (
           <ActivityDataCards
+            data-cy="activity-card-list"
             fetchData={() => FetchData()}
             datas={state.activityGroup}
           />

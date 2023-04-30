@@ -109,6 +109,7 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
         show={show}
         actionPositive={() => handleButtonSubmit()}
         loading={loading}
+        disable={!formRef?.current?.dirty}
       >
         <div>
           <Formik
