@@ -20,6 +20,30 @@ const ModalDelete: FunctionComponent<Props> = ({
   actionNegative,
   loading,
 }) => {
+  const getColorClass = (color: string): string | undefined => {
+    switch (color) {
+      case "primary":
+        return "bg-primary  text-white";
+      case "white":
+        return "bg-white  text-white";
+      case "red":
+        return "bg-red";
+      case "blue":
+        return "bg-blue  text-white hover:brightness-110";
+      case "purple":
+        return "bg-purple  text-white hover:brightness-110";
+      case "orange":
+        return "bg-orange  text-white hover:brightness-110";
+      case "green":
+        return "bg-green  text-white hover:brightness-110";
+      case "danger":
+        return "bg-danger  text-white hover:brightness-110";
+      case "gray-light":
+        return "bg-gray-light hover:brightness-95";
+      default:
+        return "bg-primary  text-white hover:brightness-110";
+    }
+  };
   return (
     <>
       <div
@@ -52,7 +76,29 @@ const ModalDelete: FunctionComponent<Props> = ({
                   </Button>
                 </div>
 
-                <Button
+                <button
+                  data-cy="modal-delete-confirm-button"
+                  className={`text-14 border rounded-full border-none px-6  h-[44px] flex items-center justify-center gap-4 transition duration-300 ease-in-out text-text-secondary-2 ${getColorClass(
+                    "danger"
+                  )} relative`}
+                  type="button"
+                  onClick={() => actionPositive()}
+                >
+                  {loading ? (
+                    <Fragment>
+                      <div className="flex items-center justify-center gap-[1rem] invisible">
+                        Hapus
+                      </div>
+                      <div className="absolute">
+                        <Loader color="red" size={22} />
+                      </div>
+                    </Fragment>
+                  ) : (
+                    "Hapus"
+                  )}
+                </button>
+
+                {/* <Button
                   data-cy="modal-delete-confirm-button"
                   onClick={() => actionPositive()}
                   bg="danger"
@@ -69,7 +115,7 @@ const ModalDelete: FunctionComponent<Props> = ({
                   ) : (
                     "Hapus"
                   )}
-                </Button>
+                </Button> */}
               </div>
             </div>
           </div>
