@@ -6,7 +6,7 @@ interface Props {
 }
 const EmptyState: FunctionComponent<Props> = ({ img }) => {
   return (
-    <div className="max-w-[767px]">
+    <div data-cy="activity-empty-state" className="max-w-[767px]">
       <Image
         src={img}
         alt="Empty state"

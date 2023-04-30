@@ -102,10 +102,7 @@ const Home: NextPageWithLayout = () => {
         ) : !loading &&
           state?.activityGroup?.data != undefined &&
           !state?.activityGroup?.data.length ? (
-          <EmptyState
-            data-cy="activity-empty-state"
-            img="/images/activity-empty-state.svg"
-          />
+          <EmptyState img="/images/activity-empty-state.svg" />
         ) : (
           <ActivityDataCards
             data-cy="activity-card-list"
