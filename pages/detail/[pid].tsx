@@ -61,7 +61,7 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
     try {
       setLoading(true);
       const res: AxiosResponse<ActivityDetailsDatas> = await axios.get(
-        `https://todo.api.devcode.gethired.id/activity-groups/${id}`
+        `${process.env.BASE_URL}/activity-groups/${id}`
       );
       if (res) {
         dispatch({
@@ -84,7 +84,7 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
   // handle edit title
   const handleEditTitle = async () => {
     const res = await axios.patch(
-      `https://todo.api.devcode.gethired.id/activity-groups/${pid}`,
+      `${process.env.BASE_URL}/activity-groups/${pid}`,
       {
         title: form.title,
       }

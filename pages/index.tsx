@@ -31,7 +31,7 @@ const Home: NextPageWithLayout = () => {
     try {
       setLoading(true);
       const res = await axios.get(
-        "https://todo.api.devcode.gethired.id/activity-groups?email=ianfebi01%40gmail.com"
+        `${process.env.BASE_URL}/activity-groups?email=ianfebi01%40gmail.com`
       );
 
       dispatch({
@@ -50,13 +50,10 @@ const Home: NextPageWithLayout = () => {
   const createNewActivity = async () => {
     try {
       setLoadingCreateActivityGroup(true);
-      const res = await axios.post(
-        "https://todo.api.devcode.gethired.id/activity-groups",
-        {
-          title: "New Activity",
-          email: "ianfebi01@gmail.com",
-        }
-      );
+      const res = await axios.post(`${process.env.BASE_URL}/activity-groups`, {
+        title: "New Activity",
+        email: "ianfebi01@gmail.com",
+      });
       dispatch({
         type: "PUSH_DATA",
         payload: { ...res.data },
