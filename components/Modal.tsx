@@ -50,7 +50,11 @@ const Modal: FunctionComponent<Props> = ({
               <div className="flex flex-col px-5 py-8 gap-16">{children}</div>
               <div className="flex justify-end  border-t-[1px] border-[#E5E5E5] px-5 pt-4">
                 <div data-cy={dataCyAction}>
-                  <Button onClick={() => actionPositive()} disable={disable}>
+                  <Button
+                    dataCy={dataCyAction}
+                    onClick={() => actionPositive()}
+                    disable={disable}
+                  >
                     {loading ? (
                       <Fragment>
                         <div className="flex items-center justify-center gap-[1rem] invisible">
