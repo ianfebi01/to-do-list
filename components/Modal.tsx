@@ -40,7 +40,7 @@ const Modal: FunctionComponent<Props> = ({
               actionNegative();
             }}
           >
-            <div className="relative flex flex-col gap-2 w-full max-w-[803px] h-auto bg-white rounded-lg shadow py-6 ">
+            <div className="relative flex flex-col gap-2 w-[803px] h-auto bg-white rounded-lg shadow py-6 ">
               <div className="flex justify-between  border-b-[1px] border-[#E5E5E5] px-5 pb-4">
                 <span data-cy={dataCyTitle} className="font-[600] text-[18px]">
                   {title}
