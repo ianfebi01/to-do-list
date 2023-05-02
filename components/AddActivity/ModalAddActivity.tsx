@@ -85,7 +85,7 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
       setLoading(true);
       setForm({ ...form, title: values.title, is_active: 1 });
       const res: AxiosResponse<Form> = await axios.post(
-        `${process.env.BASE_URL}/todo-items`,
+        `https://todo.api.devcode.gethired.id/todo-items`,
         {
           ...form,
           title: values.title,
