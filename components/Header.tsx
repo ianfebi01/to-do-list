@@ -194,26 +194,28 @@ const Header: FunctionComponent<Props> = ({
             </div>
           </MySlideDown>
         </div>
-        <div data-cy={pid ? "todo-add-button" : "activity-add-button"}>
-          <Button onClick={handleClickButton}>
-            {loading ? (
-              <Fragment>
-                <div className="flex items-center justify-center gap-[1rem] invisible">
-                  <Plus />
-                  Tambah
-                </div>
-                <div className="absolute">
-                  <Loader color="primary" size={22} />
-                </div>
-              </Fragment>
-            ) : (
-              <Fragment>
+
+        <Button
+          dataCy={pid ? "todo-add-button" : "activity-add-button"}
+          onClick={handleClickButton}
+        >
+          {loading ? (
+            <Fragment>
+              <div className="flex items-center justify-center gap-[1rem] invisible">
                 <Plus />
                 Tambah
-              </Fragment>
-            )}
-          </Button>
-        </div>
+              </div>
+              <div className="absolute">
+                <Loader color="primary" size={22} />
+              </div>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <Plus />
+              Tambah
+            </Fragment>
+          )}
+        </Button>
       </div>
     </div>
   );

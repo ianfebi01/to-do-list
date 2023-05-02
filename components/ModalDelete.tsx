@@ -72,15 +72,14 @@ const ModalDelete: FunctionComponent<Props> = ({
                   <span className="font-[600] text-[14px]">{title2}</span>
                 </div>
                 <div className="flex gap-10">
-                  <div data-cy="modal-delete-cancel-button">
-                    <Button
-                      onClick={() => actionNegative()}
-                      bg="gray-light"
-                      disable={loading ? true : false}
-                    >
-                      Batal
-                    </Button>
-                  </div>
+                  <Button
+                    dataCy="modal-delete-cancel-button"
+                    onClick={() => actionNegative()}
+                    bg="gray-light"
+                    disable={loading ? true : false}
+                  >
+                    Batal
+                  </Button>
 
                   <button
                     data-cy="modal-delete-confirm-button"
