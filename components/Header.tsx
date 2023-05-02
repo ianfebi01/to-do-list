@@ -23,6 +23,7 @@ import Loader from "./Loader";
 import MySlideDown from "./MySlideDown";
 import { sortContent } from "@/utils/SortContent";
 import { ActivityContext } from "@/context/ActivityContext";
+import OutsideClickHandler from "react-outside-click-handler";
 
 interface Props {
   type?: string;
@@ -125,15 +126,21 @@ const Header: FunctionComponent<Props> = ({
             <ArrowLeft />
           </div>
           {edit ? (
-            <input
-              autoFocus
-              className="text-36 font-bold w-80  rounded-sm border-b-2 focus:outline-none"
-              value={title}
-              style={{ background: "none" }}
-              onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                handleSetTitle(e)
-              }
-            />
+            <OutsideClickHandler
+              onOutsideClick={() => {
+                handleSetEdit();
+              }}
+            >
+              <input
+                autoFocus
+                className="text-36 font-bold w-80  rounded-sm border-b-2 focus:outline-none"
+                value={title}
+                style={{ background: "none" }}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleSetTitle(e)
+                }
+              />
+            </OutsideClickHandler>
           ) : (
             <p
               data-cy="todo-title"
