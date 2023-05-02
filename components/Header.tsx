@@ -137,7 +137,8 @@ const Header: FunctionComponent<Props> = ({
           ) : (
             <p
               data-cy="todo-title"
-              className="text-36 font-bold truncate max-w-[400px]"
+              className="text-36 font-bold truncate max-w-[400px] cursor-pointer"
+              onClick={() => handleSetEdit()}
             >
               {title}
             </p>
