@@ -117,7 +117,6 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
   const formRef = useRef<FormikProps<{ title: string }>>(null);
 
   const handleValidDirty = (valid: boolean, dirty: boolean) => {
-    console.log(valid, "+" + dirty);
     if (valid && dirty) {
       setDisableButtonSubmit(false);
     } else {
