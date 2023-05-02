@@ -23,7 +23,7 @@ import {
 import * as Yup from "yup";
 import { ActivityContext } from "@/context/ActivityContext";
 import axios, { AxiosResponse } from "axios";
-import HandleDisableFormik from "./handleDisableFormik";
+import HandleDisableFormik from "./HandleDisableFormik";
 
 interface Props {
   show: boolean;
