@@ -99,6 +99,7 @@ const Header: FunctionComponent<Props> = ({
       type: "SET_SORT",
       payload: { sort: value },
     });
+    handleShowSortCard();
   };
 
   return (
