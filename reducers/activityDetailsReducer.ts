@@ -9,8 +9,9 @@ export const activityDetailsReducer: Reducer<
     case "PUSH_DATA":
       // if (!state?.data) console.log("asu");
       const tmp = state?.todo_items;
-      tmp?.push({ ...state, ...payload });
-      tmp?.reverse();
+      // tmp?.push({ ...state, ...payload });
+      // tmp?.reverse();
+      tmp?.splice(0, 0, { ...payload });
       return { ...state, todo_items: tmp };
     case "SET_DATA":
       return { ...state, ...payload };
@@ -41,6 +42,38 @@ export const activityDetailsReducer: Reducer<
 
       const tmp5 = state?.todo_items;
       switch (payload?.sort) {
+        case "sort-latest":
+          tmp5?.sort((a, b) => {
+            let fa = a?.id,
+              fb = b?.id;
+            if (fa && fb) {
+              if (fa > fb) {
+                return -1;
+              }
+              if (fa < fb) {
+                return 1;
+              }
+            }
+            return 0;
+          });
+
+          return { ...state, sort: payload?.sort, todo_items: tmp5 };
+        case "sort-oldest":
+          tmp5?.sort((a, b) => {
+            let fa = a?.id,
+              fb = b?.id;
+            if (fa && fb) {
+              if (fa < fb) {
+                return -1;
+              }
+              if (fa > fb) {
+                return 1;
+              }
+            }
+            return 0;
+          });
+
+          return { ...state, sort: payload?.sort, todo_items: tmp5 };
         case "sort-az":
           tmp5?.sort((a, b) => {
             let fa = a?.title?.toLowerCase(),
