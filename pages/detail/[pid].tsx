@@ -100,10 +100,6 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
 
   const onChangeTitle = async (value: string) => {
     setForm({ title: value });
-    dispatch({
-      type: "SET_SORT",
-      payload: { sort: value },
-    });
     // await debounceHandleEditTitle(value);
   };
 

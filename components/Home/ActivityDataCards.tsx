@@ -77,20 +77,24 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas, fetchData }) => {
               key={item?.id}
             >
               <div
-                data-cy="activity-item-title"
                 className="flex flex-col grow-[1] cursor-pointer"
                 onClick={() => handleClickCard(item?.id as number)}
               >
-                <p className="text-18 font-bold leading-[27px]">
+                <p
+                  data-cy="activity-item-title"
+                  className="text-18 font-bold leading-[27px]"
+                >
                   {item?.title}
                 </p>
               </div>
               <div className="flex justify-between items-center">
-                <div data-cy="activity-item-date">
-                  <p className="text-14 text-text-secondary font-[500]">
-                    <Date dateString={item.created_at as string} />
-                  </p>
-                </div>
+                <p
+                  data-cy="activity-item-date"
+                  className="text-14 text-text-secondary font-[500]"
+                >
+                  <Date dateString={item.created_at as string} />
+                </p>
+
                 <button
                   data-cy="activity-item-delete-button"
                   onClick={() =>

@@ -47,12 +47,10 @@ const Home: NextPageWithLayout = () => {
   };
 
   // route
-  const router = useRouter();
-  const handleClickButton = async () => {
+  const createNewActivity = async () => {
     try {
       setLoadingCreateActivityGroup(true);
-
-      const res = await axios.post("/api-web/activity-groups/", {
+      const res = await axios.post("/api-web/activity-groups", {
         title: "New Activity",
         email: "ianfebi01@gmail.com",
       });
@@ -62,7 +60,6 @@ const Home: NextPageWithLayout = () => {
       });
       await FetchData();
 
-      // router.push(`/${res?.data?.id}`);
       setLoadingCreateActivityGroup(false);
     } catch (error) {
       setLoadingCreateActivityGroup(false);
@@ -91,7 +88,7 @@ const Home: NextPageWithLayout = () => {
       <Header
         type="Home"
         title="Activity"
-        handleClickButton={handleClickButton}
+        handleClickButton={() => createNewActivity()}
         loading={loadingCreateActivityGroup}
       />
       <div className="h-full flex justify-center items-center mt-4">

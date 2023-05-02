@@ -97,6 +97,10 @@ const Header: FunctionComponent<Props> = ({
   // click sort
   const handleSortClick = (value: string) => {
     handleShowSortCard();
+    dispatch({
+      type: "SET_SORT",
+      payload: { sort: value },
+    });
   };
 
   const handleSetEdit = () => {
