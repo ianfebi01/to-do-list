@@ -30,9 +30,7 @@ const Home: NextPageWithLayout = () => {
   const FetchData = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(
-        "/api-web/activity-groups?email=ianfebi01%40gmail.com"
-      );
+      const res = await axios.get("/getActivity");
 
       dispatch({
         type: "SET_DATA",

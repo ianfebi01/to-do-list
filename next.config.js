@@ -8,6 +8,11 @@ const nextConfig = {
         source: "/api-web/:path*",
         destination: process.env.BASE_URL,
       },
+      {
+        source: "/getActivity",
+        destination:
+          "https://todo.api.devcode.gethired.id/activity-groups?email=ianfebi01%40gmail.com",
+      },
     ];
   },
 

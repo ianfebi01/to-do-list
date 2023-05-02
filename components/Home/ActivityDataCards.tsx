@@ -29,7 +29,9 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas, fetchData }) => {
   const removeActivity = async () => {
     try {
       setLoading(id);
-      await axios.delete(`/api-web/activity-groups/${id}`);
+      await axios.delete(
+        `https://todo.api.devcode.gethired.id/activity-groups/${id}`
+      );
 
       dispatch({
         type: "REMOVE_GROUP",

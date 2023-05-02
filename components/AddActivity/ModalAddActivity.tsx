@@ -72,11 +72,14 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
     try {
       setLoading(true);
       setForm({ ...form, title: values.title, is_active: 1 });
-      const res: AxiosResponse<Form> = await axios.post(`/api-web/todo-items`, {
-        ...form,
-        title: values.title,
-        activity_group_id: pid,
-      });
+      const res: AxiosResponse<Form> = await axios.post(
+        `https://todo.api.devcode.gethired.id/todo-items`,
+        {
+          ...form,
+          title: values.title,
+          activity_group_id: pid,
+        }
+      );
       if (res) {
         dispatch({
           type: "PUSH_DATA",

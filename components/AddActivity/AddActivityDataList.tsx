@@ -49,7 +49,7 @@ const AddActivityDataList: FunctionComponent<Props> = ({ datas }) => {
   const handleCheckbox = async (id: number, val: string | number) => {
     try {
       const res: AxiosResponse<ActivityDetailsDataList> = await axios.patch(
-        `/api-web/todo-items/${id}`,
+        `https://todo.api.devcode.gethired.id/todo-items/${id}`,
         {
           is_active: val,
         }
@@ -70,7 +70,7 @@ const AddActivityDataList: FunctionComponent<Props> = ({ datas }) => {
     try {
       setLoading(id);
       const res: AxiosResponse = await axios.delete(
-        `/api-web/todo-items/${id}`
+        `https://todo.api.devcode.gethired.id/todo-items/${id}`
       );
       if (res) {
         dispatch({
@@ -106,9 +106,12 @@ const AddActivityDataList: FunctionComponent<Props> = ({ datas }) => {
 
   const handleEditTitleList = async (idValue: number, value: string) => {
     try {
-      const res = await axios.patch(`/api-web/todo-items/${idValue}`, {
-        title: value,
-      });
+      const res = await axios.patch(
+        `https://todo.api.devcode.gethired.id/todo-items/${idValue}`,
+        {
+          title: value,
+        }
+      );
       if (res) {
         dispatch({
           type: "SET_TITLE",
