@@ -114,7 +114,7 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
         <div>
           <Formik
             enableReinitialize
-            initialValues={{ title: "" }}
+            initialValues={{ title: form.title }}
             validationSchema={validator}
             onSubmit={handleSubmit}
             innerRef={formRef}
