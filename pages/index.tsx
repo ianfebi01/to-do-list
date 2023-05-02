@@ -30,7 +30,9 @@ const Home: NextPageWithLayout = () => {
   const FetchData = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("/getActivity");
+      const res = await axios.get(
+        "/api-web/activity-groups?email=ianfebi01%40gmail.com"
+      );
 
       dispatch({
         type: "SET_DATA",
@@ -50,17 +52,15 @@ const Home: NextPageWithLayout = () => {
     try {
       setLoadingCreateActivityGroup(true);
 
-      const res = await axios.post(
-        "/api-web/activity-groups?email=ianfebi01%40gmail.com",
-        {
-          title: "New Activity",
-          email: "ianfebi01@gmail.com",
-        }
-      );
+      const res = await axios.post("/api-web/activity-groups/", {
+        title: "New Activity",
+        email: "ianfebi01@gmail.com",
+      });
       dispatch({
         type: "PUSH_DATA",
         payload: { ...res.data },
       });
+      await FetchData();
 
       // router.push(`/${res?.data?.id}`);
       setLoadingCreateActivityGroup(false);
