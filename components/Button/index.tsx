@@ -43,7 +43,6 @@ const Button: FunctionComponent<DefaultProps> = ({
   return (
     <button
       data-cy={dataCy}
-      data-cy={dataCy}
       disabled={disable}
       className={`text-14 border rounded-full border-none px-6  h-[44px] flex items-center justify-center gap-4 transition duration-300 ease-in-out text-text-secondary-2 ${getColorClass(
         bg as string
