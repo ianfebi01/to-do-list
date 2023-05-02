@@ -18,11 +18,12 @@ import {
   Form,
   Formik,
   FormikProps,
+  useFormikContext,
 } from "formik";
 import * as Yup from "yup";
 import { ActivityContext } from "@/context/ActivityContext";
 import axios, { AxiosResponse } from "axios";
-import FormikForm from "./FormikForm";
+import HandleDisableFormik from "./handleDisableFormik";
 
 interface Props {
   show: boolean;
@@ -68,6 +69,9 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
   };
 
   // Form
+
+  const [disableButtonSubmit, setDisableButtonSubmit] = useState<boolean>(true);
+
   // Validate
   const validator = Yup.object({
     title: Yup.string().required("Name is required"),
@@ -112,6 +116,15 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
 
   const formRef = useRef<FormikProps<{ title: string }>>(null);
 
+  const handleValidDirty = (valid: boolean, dirty: boolean) => {
+    console.log(valid, "+" + dirty);
+    if (valid && dirty) {
+      setDisableButtonSubmit(false);
+    } else {
+      setDisableButtonSubmit(true);
+    }
+  };
+
   return (
     <div data-cy="modal-add">
       <Modal
@@ -120,11 +133,55 @@ const ModalAddActivity: FunctionComponent<Props> = ({ show, setShow, pid }) => {
         show={show}
         actionPositive={() => handleButtonSubmit()}
         loading={loading}
-        disable={!formRef?.current?.dirty}
+        disable={disableButtonSubmit}
         actionNegative={() => setShow(false)}
       >
         <div>
-          <FormikForm />
+          <Formik
+            enableReinitialize
+            initialValues={{ title: form.title }}
+            validationSchema={validator}
+            onSubmit={handleSubmit}
+            innerRef={formRef}
+          >
+            {(formik) => (
+              <Form>
+                <HandleDisableFormik
+                  setValidDirty={(valid, dirty) =>
+                    handleValidDirty(valid, dirty)
+                  }
+                />
+                <label
+                  data-cy="modal-add-name-title"
+                  htmlFor="name"
+                  className="block mb-2 text-12 font-medium text-gray-900 dark:text-gray-900"
+                >
+                  NAMA LIST ITEM
+                </label>
+                <div data-cy="modal-add-name-input">
+                  <Field
+                    type="text"
+                    name="title"
+                    id="name"
+                    className="z-20 w-full font-light border rounded-[6px] border-[#E5E5E5] focus:border-primary focus:ring-0 placeholder-[#A4A4A4]"
+                    placeholder="Tambahkan Nama List Item"
+                    onChange={formik?.handleChange("title")}
+                  />
+                </div>
+
+                <span className="error-message">
+                  <ErrorMessage name="title">
+                    {(msg) => (
+                      <div className="text-12 text-red mt-2 ml-2">{msg}</div>
+                    )}
+                  </ErrorMessage>
+                </span>
+                {/* <button type="submit" disabled={!formik.isValid}>
+                Submit
+              </button> */}
+              </Form>
+            )}
+          </Formik>
         </div>
         <div>
           <label
