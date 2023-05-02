@@ -35,8 +35,8 @@ interface Props {
   setShowSortCard?: () => void;
   pid?: number;
   dataEmpty?: boolean;
-  edit: boolean;
-  setEdit: () => void;
+  edit?: boolean;
+  setEdit?: () => void;
 }
 const Header: FunctionComponent<Props> = ({
   type,
@@ -99,6 +99,12 @@ const Header: FunctionComponent<Props> = ({
     handleShowSortCard();
   };
 
+  const handleSetEdit = () => {
+    if (setEdit) {
+      setEdit();
+    }
+  };
+
   return (
     <div className="flex justify-between">
       {type === "Home" ? (
@@ -135,7 +141,7 @@ const Header: FunctionComponent<Props> = ({
           <div
             data-cy="todo-title-edit-button"
             className=" text-20 cursor-pointer"
-            onClick={() => setEdit()}
+            onClick={() => handleSetEdit()}
           >
             <Pen />
           </div>
