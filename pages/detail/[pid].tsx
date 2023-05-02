@@ -105,21 +105,23 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
 
   return (
     <>
-      <Toaster
-        toastOptions={{
-          icon: (
-            <div className="text-20">
-              <ModalInformationIcon />
-            </div>
-          ),
-          position: "top-right",
-          className: "text-14",
-          style: {
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-            height: "44px",
-          },
-        }}
-      />
+      <div data-cy="modal-information">
+        <Toaster
+          toastOptions={{
+            icon: (
+              <div className="text-20">
+                <ModalInformationIcon />
+              </div>
+            ),
+            position: "top-right",
+            className: "text-14",
+            style: {
+              boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+              height: "44px",
+            },
+          }}
+        />
+      </div>
       <ModalAddActivity show={showModal} setShow={setShowModal} pid={pid} />
       <Header
         type="NewActivity"
