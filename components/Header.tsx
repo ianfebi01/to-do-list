@@ -35,6 +35,8 @@ interface Props {
   setShowSortCard?: () => void;
   pid?: number;
   dataEmpty?: boolean;
+  edit: boolean;
+  setEdit: () => void;
 }
 const Header: FunctionComponent<Props> = ({
   type,
@@ -47,10 +49,9 @@ const Header: FunctionComponent<Props> = ({
   setShowSortCard,
   pid,
   dataEmpty,
+  edit,
+  setEdit,
 }) => {
-  // state
-  const [edit, setEdit] = useState<boolean>(false);
-
   // change title
   const handleSetTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (setTitle) {
@@ -95,10 +96,6 @@ const Header: FunctionComponent<Props> = ({
 
   // click sort
   const handleSortClick = (value: string) => {
-    dispatch({
-      type: "SET_SORT",
-      payload: { sort: value },
-    });
     handleShowSortCard();
   };
 
@@ -132,13 +129,13 @@ const Header: FunctionComponent<Props> = ({
               data-cy="todo-title"
               className="text-36 font-bold truncate max-w-[400px]"
             >
-              {title ? title : "New Activity"}
+              {title}
             </p>
           )}
           <div
             data-cy="todo-title-edit-button"
             className=" text-20 cursor-pointer"
-            onClick={() => setEdit(!edit)}
+            onClick={() => setEdit()}
           >
             <Pen />
           </div>

@@ -31,6 +31,9 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
   // loading
   const [loading, setLoading] = useState<boolean>(false);
 
+  // edit
+  const [edit, setEdit] = useState<boolean>(false);
+
   // showSortCard
   const [showSortCard, setShowSortCard] = useState<boolean>(false);
 
@@ -79,11 +82,11 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
   };
 
   // handle edit title
-  const handleEditTitle = async (value: string) => {
+  const handleEditTitle = async () => {
     const res = await axios.patch(
       `https://todo.api.devcode.gethired.id/activity-groups/${pid}`,
       {
-        title: value,
+        title: form.title,
       }
     );
     if (res) {
@@ -97,7 +100,18 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
 
   const onChangeTitle = async (value: string) => {
     setForm({ title: value });
-    await debounceHandleEditTitle(value);
+    dispatch({
+      type: "SET_SORT",
+      payload: { sort: value },
+    });
+    // await debounceHandleEditTitle(value);
+  };
+
+  const handleEditButton = async () => {
+    if (edit) {
+      await handleEditTitle();
+    }
+    setEdit(!edit);
   };
 
   // modal
@@ -124,6 +138,8 @@ const AddActivityGroup: NextPageWithLayout<Props> = ({ pid }) => {
       </div>
       <ModalAddActivity show={showModal} setShow={setShowModal} pid={pid} />
       <Header
+        edit={edit}
+        setEdit={() => handleEditButton()}
         type="NewActivity"
         title={form?.title}
         setTitle={(value: string) => onChangeTitle(value)}
