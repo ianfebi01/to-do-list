@@ -97,6 +97,8 @@ const ActivityDataCards: FunctionComponent<Props> = ({ datas, fetchData }) => {
 
                 <button
                   data-cy="activity-item-delete-button"
+                  id={"delete-button-" + i}
+                  type="button"
                   onClick={() =>
                     handleOpenModalDelete(
                       item?.id as number,
