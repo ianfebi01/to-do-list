@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  to-do-list:
+    restart: always
+    build : .
+    ports:
+      - 3000:3000
+    networks:
+      - app
+networks:
+  app:
