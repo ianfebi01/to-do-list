@@ -14,6 +14,7 @@ import { ActivityContext, useActivity } from "@/context/ActivityContext";
 import Header from "@/components/Header";
 import { useRouter } from "next/router";
 import { Toaster } from "react-hot-toast";
+import Head from "next/head";
 
 const Home: NextPageWithLayout = () => {
   // get all data
@@ -71,6 +72,14 @@ const Home: NextPageWithLayout = () => {
 
   return (
     <>
+      <Head>
+        <title>Todo List App - Technical Test gethired.id</title>
+        <meta
+          name="description"
+          content="Simple Todo List for your daily activity."
+          key="desc"
+        />
+      </Head>
       <div data-cy="modal-information">
         <Toaster
           toastOptions={{
